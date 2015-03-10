@@ -79,7 +79,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="TicTacToe.cpp" />
+    <ClCompile Include="TicTacToecpp.cpp" />
     <ClCompile Include="Tut3-TicTacToe.cpp" />
   </ItemGroup>
   <ItemGroup>

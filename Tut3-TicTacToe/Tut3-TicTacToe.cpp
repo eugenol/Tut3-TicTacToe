@@ -14,33 +14,36 @@ int main(/*int argc, char* argv[]*/)
 
 	while (1) //Game Loop
 	{
-		Game.print();
 		while (Game.isWon() == TicTacToe::IN_PROGRESS)
 		{
-			//Game.print();
-			cout << "Player " << Game.getPlayer() << ". Enter your move: r,c" << endl;
+			system("cls");
+			Game.print();
+			cout << "Player " << Game.getPlayer() << ": Enter your move: row,column" << endl;
 			cin >> row;
 			cin.ignore(1);
 			cin >> col;
-			if (!Game.move(row - 1, col - 1))
-				cout << "Invalid Move";
-			else
-				Game.print();
-			cout << endl;
-
+			while (!Game.move(row - 1, col - 1))
+			{
+				cout << "Invalid Move" << endl;
+				cout << "Player " << Game.getPlayer() << ": Enter your move: row,column" << endl;
+				cin >> row;
+				cin.ignore(1);
+				cin >> col;
+			}
 		}
 
+		system("cls");
 		Game.print();
 
 		if (Game.isWon() == TicTacToe::DRAW)
-			cout << "Game Drawn";
+			cout << "The Game Was Drawn";
 		else if (Game.isWon() == TicTacToe::PLAYER1)
-			cout << "Player 1 Won";
+			cout << "Player 1 Won!";
 		else if (Game.isWon() == TicTacToe::PLAYER2)
-			cout << "Player 2 Won";
+			cout << "Player 2 Won!";
 		cout << endl << endl;
 
-		cout << "Would you like to play again ? (Y/N)" << endl;
+		cout << "Would you like to play again ? (Y/N) > ";
 		cin >> answer;
 		
 		if (answer == 'N' || answer == 'n')

@@ -66,80 +66,78 @@ void TicTacToe::print()
 
 int TicTacToe::isWon()
 {
-	int player1_r = 0, player2_r = 0, player1_c = 0, player2_c = 0;
-	int player1_d1 = 0, player2_d1 = 0, player1_d2 = 0, player2_d2 = 0;
-	int empty = 0;
+	int player1 = 0, player2 = 0, empty = 0;
 
 	//check rows
 	for (int i = 0; i < 3; i++)
 	{
-		player1_r = player2_r = 0;
+		player1 = player2 = 0;
 
 		for (int j = 0; j < 3; j++)
 		{
 			if (board[i][j] == 'X')
-				++player1_r;
+				++player1;
 			else if (board[i][j] == 'O')
-				++player2_r;
+				++player2;
 			else
 				++empty;
 		}
 
-		if (player1_r == 3)
+		if (player1 == 3)
 			return PLAYER1;
-		else if (player2_r == 3)
+		else if (player2 == 3)
 			return PLAYER2;
 	}
 
 	//check columns
 	for (int i = 0; i < 3; i++)
 	{
-		player1_c = player2_c = 0;
+		player1 = player2 = 0;
 
 		for (int j = 0; j < 3; j++)
 		{
 			if (board[j][i] == 'X')
-				++player1_c;
+				++player1;
 			else if (board[j][i] == 'O')
-				++player2_c;
+				++player2;
 		}
 
-		if (player1_c == 3)
+		if (player1 == 3)
 			return PLAYER1;
-		else if (player2_c == 3)
+		else if (player2 == 3)
 			return PLAYER2;
 	}
 
 	//check diagonal 1
-	player1_d1 = player2_d1 = 0;
+	player1 = player2 = 0;
 	for (int i = 0; i < 3; i++)
 	{
 
 		if (board[i][i] == 'X')
-			++player1_d1;
+			++player1;
 		else if (board[i][i] == 'O')
-			++player2_d1;
+			++player2;
 	}
 
-	if (player1_d1 == 3)
+	if (player1 == 3)
 		return PLAYER1;
-	else if (player2_d1 == 3)
+	else if (player2 == 3)
 		return PLAYER2;
 
 	//check diagonal 2
-	player1_d2 = player2_d2 = 0;
+	player1 = player2 = 0;
 	for (int i = 0; i < 3; i++)
 	{
 
 		if (board[2-i][i] == 'X')
-			++player1_d2;
+			++player1;
 		else if (board[2-i][i] == 'O')
-			++player2_d2;
+			++player2;
 	}
 
-	if (player1_d2 == 3)
+	if (player1 == 3)
 		return PLAYER1;
-	else if (player2_d2 == 3)
+	else if (player2 == 3)
 		return PLAYER2;
 
 	if (empty == 0)

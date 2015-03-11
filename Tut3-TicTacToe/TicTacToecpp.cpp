@@ -5,6 +5,7 @@ using namespace std;
 
 TicTacToe::TicTacToe()
 {
+	//Initialize the board, set all squares blank, set player to player 1
 	for (int i = 0; i < 3; i++)
 	{
 		for (int j = 0; j < 3; j++)
@@ -23,6 +24,7 @@ TicTacToe::~TicTacToe()
 
 void TicTacToe::restart()
 {
+	//clear the board: set all squares blank, set player to player 1
 	for (int i = 0; i < 3; i++)
 	{
 		for (int j = 0; j < 3; j++)
@@ -38,7 +40,7 @@ bool TicTacToe::move(int row, int col)
 {
 	if (board[row][col] != ' ' || row > 2 || row < 0 || col > 3 || col < 0)
 	{
-		return false;
+		return false; // Invalid move
 	}
 	else
 	{

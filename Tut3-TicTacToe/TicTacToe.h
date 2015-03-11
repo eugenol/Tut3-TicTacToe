@@ -13,6 +13,7 @@ public:
 	TicTacToe();
 	~TicTacToe();
 
+	int getPlayer() { return currentPlayer; }
 	enum game_state{IN_PROGRESS, PLAYER1, PLAYER2, DRAW };
 	void restart();
 	bool move(int, int);

@@ -13,20 +13,25 @@ int main(/*int argc, char* argv[]*/)
 
 	//while (1) //Game Loop
 	//{
-		//while (Game.isWon() == TicTacToe::IN_PROGRESS)
-		//{
+		while (Game.isWon() == TicTacToe::IN_PROGRESS)
+		{
 			Game.print();
-			cout << "Enter your coordinates r c";
-			
-			cin >> row >> col;
+			cout << "Player " << Game.getPlayer() << ". Enter your move: r,c" << endl;
+			cin >> row;
+			cin.ignore(1);
+			cin >> col;
 			Game.move(row-1, col-1);
-			Game.print();
-			cout << "Enter your coordinates r c";
-			cin >> row >> col;
-			Game.move(row-1, col-1);
-			Game.print();
+			cout << endl;
 
-		//}
+		}
+
+		if (Game.isWon() == TicTacToe::DRAW)
+			cout << "Game Drawn";
+		else if (Game.isWon() == TicTacToe::PLAYER1)
+			cout << "Player 1 Won";
+		else if (Game.isWon() == TicTacToe::PLAYER2)
+			cout << "Player 2 Won";
+		cout << endl;
 	//}
 
 	return 0;

@@ -50,7 +50,7 @@ bool TicTacToe::move(int row, int col)
 		else
 		{
 			board[row][col] = 'O';
-			currentPlayer = PLAYER2;
+			currentPlayer = PLAYER1;
 		}
 		return true;
 	}
@@ -61,45 +61,74 @@ void TicTacToe::print()
 	cout << " | 1 | 2 |3" << endl;
 	cout << "1| " << board[0][0] << " | " << board[0][1] << " | " << board[0][2] << endl;
 	cout << "2| " << board[1][0] << " | " << board[1][1] << " | " << board[1][2] << endl;
-	cout << "2| " << board[2][0] << " | " << board[2][1] << " | " << board[2][2] << endl;
+	cout << "3| " << board[2][0] << " | " << board[2][1] << " | " << board[2][2] << endl;
 }
 
 int TicTacToe::isWon()
 {
-	bool p1flag = false, p2flag = false, drawflag = false;
+	int player1_r = 0, player2_r = 0, player1_c = 0, player2_c = 0;
+	int player1_d1 = 0, player2_d1 = 0, player1_d2 = 0, player2_d2 = 0;
+	int empty = 0;
 
+	//Check rows and columns
 	for (int i = 0; i < 3; i++)
 	{
-		p1flag = false;
-		p2flag = false;
-		drawflag = true;
+		player1_r = player2_r = player1_c = player2_c = 0;
 
 		for (int j = 0; j < 3; j++)
 		{
+			//Check rows
 			if (board[i][j] == 'X')
 			{
-				p1flag = true;
-				p2flag = false;
+				++player1_r;
 			}
 			else if (board[i][j] == 'O')
 			{
-				p1flag = false;
-				p2flag = true;
+				++player2_r;
 			}
-			else
+			else if (board[i][j] == ' ')
 			{
-				p1flag = false;
-				p2flag = false;
+				++empty;
 			}
+			//Check columns
+			if (board[j][i] == 'X')
+			{
+				++player1_c;
+			}
+			else if (board[j][i] == 'O')
+			{
+				++player2_c;
+			}
+
 		}
-		if (p1flag)
+		//Check diagonals
+		if (board[i][i] == 'X')
+		{
+			++player1_d1;
+		}
+		else if (board[i][i] == 'O')
+		{
+			++player2_d1;
+		}
+
+		if (board[2-i][i] == 'X')
+		{
+			++player1_d1;
+		}
+		else if (board[2-i][2] == 'O')
+		{
+			++player2_d1;
+		}
+
+
+		if (player1_r == 3 || player1_c == 3 || player1_d1 == 3 || player1_d2 == 3)
 			return PLAYER1;
-		else if (p2flag)
+		else if (player2_r == 3 || player2_c == 3 || player2_d1 == 3 || player2_d2 == 3)
 			return PLAYER2;
-
-
+		else if (empty == 0)
+			return DRAW;
 	}
-	return TicTacToe::IN_PROGRESS;
+	return IN_PROGRESS;
 }
 
 

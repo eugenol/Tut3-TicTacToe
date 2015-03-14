@@ -38,7 +38,11 @@ void TicTacToe::restart()
 
 bool TicTacToe::move(int row, int col)
 {
-	if (board[row][col] != ' ' || row > 2 || row < 0 || col > 3 || col < 0)
+	if (row > 2 || row < 0 || col > 2 || col < 0) // move must be within the 3x3 board
+	{
+		return false; // Invalid move
+	}
+	else if (board[row][col] != ' ' ) // block must be empty
 	{
 		return false; // Invalid move
 	}
